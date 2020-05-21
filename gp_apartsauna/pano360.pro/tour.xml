@@ -1,0 +1,1020 @@
+<krpano version="1.19" title="Virtual Tour">
+    
+<security cors="">
+    
+    <allowdomain domain="http://hotelgp.tilda.ws/" />
+    <allowdomain domain="https://hotelgp.tilda.ws/" />
+    <allowdomain domain="https://hotelgp.ru" />
+    
+</security>
+	<include url="skin/vtourskin.xml" />
+<!--
+
+<crossdomainxml url="http://.../crossdomain.xml" />
+    <crossdomainxml url="..." />
+
+-->
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               webvr="true"
+	               webvr_gyro_keeplookingdirection="false"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="true"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+	<include url="skin/vtourskin_design_ultra_light.xml" />
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+
+
+
+
+
+
+	<scene name="scene_apart" title="apart" onstart="" havevrimage="true" thumburl="panos/apart.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/apart.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/apart.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/apart.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/apart.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/apart.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-30.052" atv="2.337" linkedscene="scene_day_left" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="33.639" atv="1.791" linkedscene="scene_day_right" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-166.928" atv="4.393" linkedscene="scene_kitch" />
+
+	</scene>
+
+	<scene name="scene_apart_nigth" title="apart_nigth" onstart="" havevrimage="true" thumburl="panos/apart_nigth.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/apart_nigth.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/apart_nigth.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/apart_nigth.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/apart_nigth.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/apart_nigth.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-22.820" atv="0.958" linkedscene="scene_night_left" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="41.511" atv="2.411" linkedscene="scene_night_right" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-159.272" atv="4.832" linkedscene="scene_sauna_bath" />
+		
+
+	</scene>
+
+	<scene name="scene_day_left" title="day_left" onstart="" havevrimage="true" thumburl="panos/day_left.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/day_left.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4224" tiledimageheight="4224">
+				<cube url="panos/day_left.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/day_left.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/day_left.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/day_left.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-150.098" atv="3.105" linkedscene="scene_apart" />
+
+	</scene>
+
+	<scene name="scene_day_right" title="day_right" onstart="" havevrimage="true" thumburl="panos/day_right.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/day_right.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/day_right.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/day_right.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/day_right.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/day_right.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-87.884" atv="2.054" linkedscene="scene_apart" />
+
+	</scene>
+
+	<scene name="scene_kitch" title="kitch" onstart="" havevrimage="true" thumburl="panos/kitch.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/kitch.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/kitch.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/kitch.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/kitch.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/kitch.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-97.165" atv="2.014" linkedscene="scene_apart" />
+
+	</scene>
+
+	<scene name="scene_night_left" title="night_left" onstart="" havevrimage="true" thumburl="panos/night_left.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/night_left.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/night_left.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/night_left.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/night_left.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/night_left.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-144.117" atv="0.534" linkedscene="scene_apart_nigth" />
+
+	</scene>
+
+	<scene name="scene_night_right" title="night_right" onstart="" havevrimage="true" thumburl="panos/night_right.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/night_right.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/night_right.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/night_right.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/night_right.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/night_right.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-145.819" atv="6.914" linkedscene="scene_apart_nigth" />
+
+	</scene>
+
+	<scene name="scene_sauna" title="sauna" onstart="" havevrimage="true" thumburl="panos/sauna.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/sauna.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/sauna.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/sauna.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/sauna.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/sauna.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-92.714" atv="5.504" linkedscene="scene_sauna_bath" />
+
+	</scene>
+
+	<scene name="scene_sauna_bath" title="sauna_bath" onstart="" havevrimage="true" thumburl="panos/sauna_bath.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/sauna_bath.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/sauna_bath.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/sauna_bath.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/sauna_bath.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/sauna_bath.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-150.846" atv="2.470" linkedscene="scene_apart_nigth" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="100.618" atv="4.130" linkedscene="scene_sauna" />
+
+	</scene>
+
+<scene name="scene_705" title="705" onstart="" havevrimage="true" thumburl="panos/705.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/705.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/705.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/705.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/705.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/705.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-167.746" atv="8.725" linkedscene="scene_705_wc" />
+
+	</scene>
+
+	<scene name="scene_705_wc" title="705_wc" onstart="" havevrimage="true" thumburl="panos/706_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/706_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/706_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/706_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/706_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/706_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="176.179" atv="3.843" linkedscene="scene_705" />
+
+	</scene>
+
+	<scene name="scene_706a" title="706a" onstart="" havevrimage="true" thumburl="panos/706a.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/706a.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/706a.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/706a.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/706a.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/706a.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-82.859" atv="8.801" linkedscene="scene_706_wc" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="-42.084" atv="17.728" linkedscene="scene_706b" />
+
+	</scene>
+
+	<scene name="scene_706b" title="706b" onstart="" havevrimage="true" thumburl="panos/706b.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/706b.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/706b.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/706b.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/706b.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/706b.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="179.593" atv="11.885" linkedscene="scene_706_wc" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="88.590" atv="6.128" linkedscene="scene_706a" />
+
+	</scene>
+
+		<scene name="scene_706_wc" title="706_wc" onstart="" havevrimage="true" thumburl="panos/706_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/706_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/706_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/706_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/706_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/706_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="176.179" atv="3.843" linkedscene="scene_706a" />
+
+	</scene>
+
+	<scene name="scene_774" title="774" onstart="" havevrimage="true" thumburl="panos/774.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/774.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/774.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/774.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/774.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/774.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="172.424" atv="4.154" linkedscene="scene_774_wc" />
+
+	</scene>
+
+	<scene name="scene_774_wc" title="774_wc" onstart="" havevrimage="true" thumburl="panos/774_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/774_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/774_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/774_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/774_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/774_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="229.255" atv="2.474" linkedscene="scene_774" />
+
+	</scene>
+
+	<scene name="scene_775" title="775" onstart="" havevrimage="true" thumburl="panos/775.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/775.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/775.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/775.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/775.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/775.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-156.669" atv="2.381" linkedscene="scene_775_wc" />
+
+	</scene>
+
+	<scene name="scene_775_wc" title="775_wc" onstart="" havevrimage="true" thumburl="panos/775_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/775_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/775_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/775_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/775_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/775_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="131.291" atv="5.080" linkedscene="scene_775" />
+
+	</scene>
+
+	<scene name="scene_776" title="776" onstart="" havevrimage="true" thumburl="panos/776.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/776.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/776.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/776.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/776.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/776.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-157.083" atv="5.428" linkedscene="scene_776_wc" />
+
+	</scene>
+
+	<scene name="scene_776_wc" title="776_wc" onstart="" havevrimage="true" thumburl="panos/776_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/776_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/776_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/776_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/776_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/776_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="129.250" atv="3.414" linkedscene="scene_776" />
+
+	</scene>
+
+	<scene name="scene_771" title="771" onstart="" havevrimage="true" thumburl="panos/771.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/771.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/771.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/771.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/771.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/771.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-174.089" atv="7.445" linkedscene="scene_771_wc" />
+
+	</scene>
+
+	<scene name="scene_771_wc" title="771_wc" onstart="" havevrimage="true" thumburl="panos/771_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/771_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/771_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/771_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/771_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/771_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-176.431" atv="8.532" linkedscene="scene_771_wc" />
+
+	</scene>
+
+	<scene name="scene_772" title="772" onstart="" havevrimage="true" thumburl="panos/772.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/772.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/772.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/772.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/772.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/772.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="145.709" atv="7.145" linkedscene="scene_772_wc" />
+
+	</scene>
+
+	<scene name="scene_772_wc" title="772_wc" onstart="" havevrimage="true" thumburl="panos/772_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/772_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/772_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/772_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/772_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/772_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="168.206" atv="0.370" linkedscene="scene_772" />
+
+	</scene>
+
+	<scene name="scene_773" title="773" onstart="" havevrimage="true" thumburl="panos/773.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/773.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/773.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/773.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/773.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/773.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-136.002" atv="7.426" linkedscene="scene_773_wc" />
+
+	</scene>
+
+	<scene name="scene_773_wc" title="773_wc" onstart="" havevrimage="true" thumburl="panos/773_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/773_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/773_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/773_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/773_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/773_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="190.967" atv="-0.001" linkedscene="scene_773" />
+
+	</scene>
+
+<scene name="scene_702" title="702" onstart="" havevrimage="true" thumburl="panos/702.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/702.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/702.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/702.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/702.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/702.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="129.466" atv="4.883" linkedscene="scene_702_wc" />
+
+	</scene>
+
+	<scene name="scene_702_wc" title="702_wc" onstart="" havevrimage="true" thumburl="panos/702_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/702_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/702_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/702_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/702_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/702_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="171.265" atv="2.671" linkedscene="scene_702" />
+
+	</scene>
+
+	<scene name="scene_703" title="703" onstart="" havevrimage="true" thumburl="panos/703.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/703.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/703.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/703.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/703.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/703.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="153.076" atv="8.583" linkedscene="scene_703_wc" />
+
+
+	</scene>
+
+	<scene name="scene_703_wc" title="703_wc" onstart="" havevrimage="true" thumburl="panos/704_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/704_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/704_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/704_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/704_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/704_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="168.780" atv="15.447" linkedscene="scene_703" />
+
+	</scene>
+
+<scene name="scene_701" title="701" onstart="" havevrimage="true" thumburl="panos/701.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/701.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/701.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/701.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/701.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/701.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="125.318" atv="4.760" linkedscene="scene_701_wc" />
+
+
+	</scene>
+
+	<scene name="scene_701_wc" title="701_wc" onstart="" havevrimage="true" thumburl="panos/702_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/702_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/702_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/702_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/702_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/702_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="171.683" atv="5.704" linkedscene="scene_701" />
+
+	</scene>
+<scene name="scene_704" title="704" onstart="" havevrimage="true" thumburl="panos/704.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/704.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/704.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/704.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/704.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/704.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="162.920" atv="5.260" linkedscene="scene_704_wc" />
+
+	</scene>
+
+	<scene name="scene_704_wc" title="704_wc" onstart="" havevrimage="true" thumburl="panos/704_wc.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+
+		<preview url="panos/704_wc.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
+			<level tiledimagewidth="4160" tiledimageheight="4160">
+				<cube url="panos/704_wc.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="2112" tiledimageheight="2112">
+				<cube url="panos/704_wc.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/704_wc.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
+		</image>
+
+		<image if="webvr.isenabled">
+			<cube url="panos/704_wc.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="168.780" atv="15.447" linkedscene="scene_704" />
+
+	</scene>
+</krpano>
