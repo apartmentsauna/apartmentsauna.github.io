@@ -113,7 +113,6 @@
 			<cube url="panos/apart.tiles/vr/pano_%s.jpg" />
 		</image>
 
-		<!-- place your scene hotspots here -->
 		<hotspot name="spot1" style="skin_hotspotstyle" ath="-30.052" atv="2.337" linkedscene="scene_day_left" />
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="33.639" atv="1.791" linkedscene="scene_day_right" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="-166.928" atv="4.393" linkedscene="scene_kitch" />
