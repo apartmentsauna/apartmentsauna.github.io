@@ -147,7 +147,7 @@
 
 	</scene>
 
-	<scene name="scene_apart_nigth" title="apart_nigth" onstart="" havevrimage="true" thumburl="panos/apart_nigth.tiles/thumb.jpg" lat="" lng="" heading="">
+<!-- 	<scene name="scene_apart_nigth" title="apart_nigth" onstart="" havevrimage="true" thumburl="panos/apart_nigth.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
 
@@ -169,13 +169,13 @@
 			<cube url="panos/apart_nigth.tiles/vr/pano_%s.jpg" />
 		</image>
 
-		<!-- place your scene hotspots here -->
+		place your scene hotspots here
 		<hotspot name="spot1" style="skin_hotspotstyle" ath="-22.820" atv="0.958" linkedscene="scene_night_left" />
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="41.511" atv="2.411" linkedscene="scene_night_right" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="-159.272" atv="4.832" linkedscene="scene_sauna_bath" />
 		
 
-	</scene>
+	</scene> -->
 
 	<scene name="scene_day_left" title="day_left" onstart="" havevrimage="true" thumburl="panos/day_left.tiles/thumb.jpg" lat="" lng="" heading="">
 

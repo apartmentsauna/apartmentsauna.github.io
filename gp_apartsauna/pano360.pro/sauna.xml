@@ -150,36 +150,35 @@
 	</scene>
 
 
-	<scene name="scene_apart" title="apart" onstart="" havevrimage="true" thumburl="panos/apart.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_apart" title="apart" onstart="" havevrimage="true" thumburl="panos/hotel_gp_apartment.tiles/thumb.jpg" lat="" lng="" heading="">
 
-		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" />
 
-		<preview url="panos/apart.tiles/preview.jpg" />
+		<preview url="panos/hotel_gp_apartment.tiles/preview.jpg" />
 
 		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled">
-			<level tiledimagewidth="4160" tiledimageheight="4160">
-				<cube url="panos/apart.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
+			<level tiledimagewidth="4672" tiledimageheight="4672">
+				<cube url="panos/hotel_gp_apartment.tiles/%s/l4/%0v/l4_%s_%0v_%0h.jpg" />
 			</level>
-			<level tiledimagewidth="2112" tiledimageheight="2112">
-				<cube url="panos/apart.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
+			<level tiledimagewidth="2304" tiledimageheight="2304">
+				<cube url="panos/hotel_gp_apartment.tiles/%s/l3/%0v/l3_%s_%0v_%0h.jpg" />
 			</level>
-			<level tiledimagewidth="1024" tiledimageheight="1024">
-				<cube url="panos/apart.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			<level tiledimagewidth="1152" tiledimageheight="1152">
+				<cube url="panos/hotel_gp_apartment.tiles/%s/l2/%0v/l2_%s_%0v_%0h.jpg" />
 			</level>
-		</image>
-
-		<image if="webvr.isenabled">
-			<cube url="panos/apart.tiles/vr/pano_%s.jpg" />
+			<level tiledimagewidth="640" tiledimageheight="640">
+				<cube url="panos/hotel_gp_apartment.tiles/%s/l1/%0v/l1_%s_%0v_%0h.jpg" />
+			</level>
 		</image>
 
 		<!-- place your scene hotspots here -->
-		<hotspot name="spot1" style="skin_hotspotstyle" ath="-30.052" atv="2.337" linkedscene="scene_day_left" />
-		<hotspot name="spot2" style="skin_hotspotstyle" ath="33.639" atv="1.791" linkedscene="scene_day_right" />
-		<hotspot name="spot3" style="skin_hotspotstyle" ath="-166.928" atv="4.393" linkedscene="scene_kitch" />
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-55.360" atv="1.527" linkedscene="scene_day_left" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="55.452" atv="2.560" linkedscene="scene_day_right" />
+		<hotspot name="spot3" style="skin_hotspotstyle" ath="-176.830" atv="3.962" linkedscene="scene_kitch" />
 
 	</scene>
 
-	<scene name="scene_apart_nigth" title="apart_nigth" onstart="" havevrimage="true" thumburl="panos/apart_nigth.tiles/thumb.jpg" lat="" lng="" heading="">
+<!-- 	<scene name="scene_apart_nigth" title="apart_nigth" onstart="" havevrimage="true" thumburl="panos/apart_nigth.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="107" maxpixelzoom="0.90" fovmax="127" vlookatmin="-90" vlookatmax="77" limitview="range" />
 
@@ -201,13 +200,13 @@
 			<cube url="panos/apart_nigth.tiles/vr/pano_%s.jpg" />
 		</image>
 
-		<!-- place your scene hotspots here -->
+		place your scene hotspots here
 		<hotspot name="spot1" style="skin_hotspotstyle" ath="-22.820" atv="0.958" linkedscene="scene_night_left" />
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="41.511" atv="2.411" linkedscene="scene_night_right" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="-159.272" atv="4.832" linkedscene="scene_sauna_bath" />
 		
 
-	</scene>
+	</scene> -->
 
 	<scene name="scene_day_left" title="day_left" onstart="" havevrimage="true" thumburl="panos/day_left.tiles/thumb.jpg" lat="" lng="" heading="">
 
